@@ -1,63 +1,84 @@
 import Image from "next/image";
+import Link from "next/link";
+import Ticker from "@/components/motion/Ticker";
+import VideoCard from "@/components/ui/cards/VideoCard";
 
 export default function Home() {
+  // Video paths
+  const videos = [
+    "/videos/zodiac-short-video-1.mp4",
+    "/videos/zodiac-short-video-2.mp4",
+    "/videos/zodiac-short-video-3.mp4",
+    "/videos/zodiac-short-video-4.mp4",
+    "/videos/zodiac-short-video-5.mp4",
+  ];
+
+  // Create 6 columns with different videos and directions
+  const columns = [
+    { videos: [...videos, ...videos.slice(0, 1)], direction: "up" as const, duration: 65 },
+    { videos: [...videos, ...videos.slice(0, 1)], direction: "down" as const, duration: 65 },
+    { videos: [...videos, ...videos.slice(0, 1)], direction: "up" as const, duration: 65 },
+    { videos: [...videos, ...videos.slice(0, 1)], direction: "down" as const, duration: 65 },
+    { videos: [...videos, ...videos.slice(0, 1)], direction: "up" as const, duration: 65 },
+    { videos: [...videos, ...videos.slice(0, 1)], direction: "down" as const, duration: 65 },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="relative flex min-h-screen items-center justify-center bg-zodiac overflow-hidden">
+      {/* Animated Video Background */}
+      <div className="absolute inset-0 flex gap-4">
+        {columns.map((column, columnIndex) => (
+          <div key={columnIndex} className="flex-1 rotate-2">
+            <Ticker direction={column.direction} duration={column.duration} className="h-screen">
+              {column.videos.map((video, videoIndex) => (
+                <VideoCard
+                  key={`${columnIndex}-${videoIndex}`}
+                  videoSrc={video}
+                  className="w-full h-[400px]"
+                />
+              ))}
+            </Ticker>
+          </div>
+        ))}
+      </div>
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/30 w-full h-full"/>
+      
+      <main className="flex flex-col items-center justify-center px-8 z-10">
+        {/* Logo and Text Section */}
+        <div className="flex items-center gap-8 mb-12">
+          
+          {/* Text */}
+          <div>
+            <div className="flex w-full items-center justify-end gap-12">
+              {/* Logo */}
+              <div className="flex-shrink-0 h-42 w-42">
+                <Image
+                src={"/logo/zodiacgloballogo.png"}
+                width={600}
+                height={500}
+                alt="Zodiac Global Logo"
+                />
+              </div>
+              <h1 className="text-[10rem] font-semibold text-cream leading-none text-right">
+                zodiac
+              </h1>
+            </div>
+            <h2 className="text-[10rem] font-semibold text-cream leading-none text-right">
+              global group
+            </h2>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Buttons */}
+        <div className="flex gap-6">
+          <Link href="/talent-management" className="px-12 py-4 bg-cream text-black text-3xl font-normal rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+            Talent Management
+          </Link>
+          <Link href="/influencer-marketing" className="px-12 py-4 bg-cream text-black text-3xl font-normal rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+            Influencer Marketing
+          </Link>
         </div>
       </main>
     </div>
