@@ -24,10 +24,10 @@ export default function Tabs({ tabs, defaultTab }: TabsProps) {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-6 py-3 font-semibold text-sm transition-all cursor-pointer ${
+            className={`px-6 py-2 font-semibold text-sm transition-all cursor-pointer rounded-xl border ${
               activeTab === tab.id
-                ? "text-cream bg-zodiac px-2 py-1.5 rounded-xl"
-                : "text-zodiac/50 hover:text-zodiac/75"
+                ? "bg-zodiac text-cream border-zodiac/50 rounded-xl"
+                : "text-white/40 border-transparent hover:text-white hover:bg-white/5"
             }`}
           >
             {tab.label}

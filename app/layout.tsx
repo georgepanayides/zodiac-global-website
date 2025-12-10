@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
+import FooterVisibility from "@/components/footer/FooterVisibility";
 
 export const metadata: Metadata = {
   title: "Zodiac Global Group",
@@ -18,7 +18,7 @@ export default function RootLayout({
       <body className="antialiased bg-black">
         <Header />
         {children}
-        <Footer />
+        <FooterVisibility />
       </body>
     </html>
   );

@@ -11,6 +11,8 @@ export default function Home() {
     "/videos/zodiac-short-video-3.mp4",
     "/videos/zodiac-short-video-4.mp4",
     "/videos/zodiac-short-video-5.mp4",
+    "/videos/zodiac-short-video-5.mp4",
+    "/videos/zodiac-short-video-5.mp4",
   ];
 
   // Create 6 columns with different videos and directions

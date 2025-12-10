@@ -9,6 +9,14 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@tsparticles/plugin-emitters": "^3.9.1",
+    "@tsparticles/plugin-polygon-mask": "^3.9.1",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/shape-heart": "^3.9.1",
+    "@tsparticles/shape-image": "^3.9.1",
+    "@tsparticles/slim": "^3.9.1",
+    "@use-gesture/react": "^10.3.1",
+    "matter-js": "^0.20.0",
     "motion": "^12.23.25",
     "next": "16.0.7",
     "react": "19.2.0",
@@ -17,6 +25,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/matter-js": "^0.20.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

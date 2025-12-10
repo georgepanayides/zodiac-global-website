@@ -3,6 +3,7 @@ import Tabs from "@/components/ui/tabs/Tabs";
 import TalentForm from "@/components/ui/forms/TalentForm";
 import BrandForm from "@/components/ui/forms/BrandForm";
 import { FaTiktok, FaInstagram } from "react-icons/fa";
+import FadeIn from "../motion/FadeIn";
 
 export default function Footer() {
   return (
@@ -88,13 +89,13 @@ export default function Footer() {
           </div>
 
           {/* Right Column - Contact Form */}
-          <div className="bg-cream rounded-2xl p-8">
-            <h2 className="text-4xl font-bold text-zodiac mb-2 leading-tight">
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+            <h2 className="text-4xl font-bold text-white mb-2 leading-tight">
               let&apos;s start
               <br />
               something new
             </h2>
-            <p className="text-zodiac mb-6">
+            <p className="text-white/60 mb-6">
               Tell us more about your project and we&apos;ll reach out soon
             </p>
             <Tabs
@@ -136,11 +137,13 @@ export default function Footer() {
       </div>
 
       {/* Large Brand Text */}
+      <FadeIn>
       <div className="w-full mt-16 select-none pointer-events-none">
           <h1 className="text-[17vw] leading-[0.8] font-bold tracking-tighter text-cream/15 translate-y-[2vw] whitespace-nowrap">
             zodiac global
           </h1>
       </div>
+      </FadeIn>
     </footer>
   );
 }

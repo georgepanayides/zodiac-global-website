@@ -2,7 +2,7 @@ import { submitBrandForm } from "@/lib/actions";
 import SubmitButton from "@/components/ui/buttons/SubmitButton";
 
 export default function BrandForm() {
-  const inputClasses = "w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-zodiac bg-white text-zodiac placeholder:text-gray-400";
+  const inputClasses = "w-full px-4 py-3 rounded-lg border border-white/10 focus:outline-none focus:border-white/40 bg-white/5 text-white placeholder:text-white/30 transition-colors";
 
   return (
     <form action={submitBrandForm} className="space-y-4">
