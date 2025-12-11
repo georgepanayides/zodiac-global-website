@@ -5,24 +5,54 @@ import VideoCard from "@/components/ui/cards/VideoCard";
 
 export default function Home() {
   // Video paths
-  const videos = [
+  const allVideos = [
+    "/videos/SnapInsta.to_AQNvn5_RWdOJvK1m2cbuIB56uk7dXvg_2xq5w5w6HuT6fUOkUm6keo80B8Kk3Q9Ox_-0_1HbjFAS5gb-QYgQiqKyqieZaZdsTS-_Q2c.mp4",
+    "/videos/SnapInsta.to_AQOlJmHo5WHvklpBrxqx4Ju7vZTt6v-lmqspQ8qNMQ5fGb5naAkB_pj405Kji-k5ZXqbX3rUXqkB9kzTPP62udcDoRIUUkNNj4wdM0Q.mp4",
+    "/videos/SnapInsta.to_AQPljAyUl8vbBITOW4fOJEyxMxGGZAOES2EAgT0Y5jwsokoqIDQdJCVc4DWZFuZlo8PgoxYgWh7A0D4ZZ-i6OCxDrwFujdxRugu3pJ0.mp4",
+    "/videos/SnapTikZ.App_7515732061341125910_hd.mp4",
+    "/videos/ssstik.io_@leahlouvaine_1754284735770.mp4",
+    "/videos/ssstik.io_1756449918293.mp4",
     "/videos/zodiac-short-video-1.mp4",
     "/videos/zodiac-short-video-2.mp4",
     "/videos/zodiac-short-video-3.mp4",
     "/videos/zodiac-short-video-4.mp4",
     "/videos/zodiac-short-video-5.mp4",
-    "/videos/zodiac-short-video-5.mp4",
-    "/videos/zodiac-short-video-5.mp4",
   ];
 
+  // Helper to shuffle array (removed to avoid impure function error)
+  
   // Create 6 columns with different videos and directions
   const columns = [
-    { videos: [...videos, ...videos.slice(0, 1)], direction: "up" as const, duration: 65 },
-    { videos: [...videos, ...videos.slice(0, 1)], direction: "down" as const, duration: 65 },
-    { videos: [...videos, ...videos.slice(0, 1)], direction: "up" as const, duration: 65 },
-    { videos: [...videos, ...videos.slice(0, 1)], direction: "down" as const, duration: 65 },
-    { videos: [...videos, ...videos.slice(0, 1)], direction: "up" as const, duration: 65 },
-    { videos: [...videos, ...videos.slice(0, 1)], direction: "down" as const, duration: 65 },
+    { 
+      videos: [allVideos[0], allVideos[5], allVideos[2], allVideos[8], allVideos[1], allVideos[9], allVideos[3], allVideos[7], allVideos[10], allVideos[4], allVideos[6]], 
+      direction: "up" as const, 
+      duration: 65 
+    },
+    { 
+      videos: [allVideos[5], allVideos[2], allVideos[8], allVideos[1], allVideos[9], allVideos[3], allVideos[7], allVideos[0], allVideos[10], allVideos[4], allVideos[6]], 
+      direction: "down" as const, 
+      duration: 75 
+    },
+    { 
+      videos: [allVideos[10], allVideos[4], allVideos[1], allVideos[6], allVideos[2], allVideos[8], allVideos[5], allVideos[9], allVideos[0], allVideos[3], allVideos[7]], 
+      direction: "up" as const, 
+      duration: 60 
+    },
+    { 
+      videos: [allVideos[3], allVideos[9], allVideos[5], allVideos[0], allVideos[7], allVideos[1], allVideos[4], allVideos[10], allVideos[6], allVideos[8], allVideos[2]], 
+      direction: "down" as const, 
+      duration: 70 
+    },
+    { 
+      videos: [allVideos[8], allVideos[0], allVideos[6], allVideos[4], allVideos[10], allVideos[5], allVideos[2], allVideos[7], allVideos[1], allVideos[9], allVideos[3]], 
+      direction: "up" as const, 
+      duration: 68 
+    },
+    { 
+      videos: [allVideos[1], allVideos[7], allVideos[3], allVideos[9], allVideos[0], allVideos[6], allVideos[8], allVideos[2], allVideos[5], allVideos[10], allVideos[4]], 
+      direction: "down" as const, 
+      duration: 62 
+    },
   ];
 
   return (

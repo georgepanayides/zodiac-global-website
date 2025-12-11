@@ -33,7 +33,7 @@ const navigationConfig: Record<string, NavItem[]> = {
   ],
   talent: [
     { label: "HOME", href: "/" },
-    { label: "ABOUT", href: "/talent-management/about" },
+    { label: "ABOUT", href: "/about" },
     { label: "OUR SERVICES", href: "/talent-management/services" },
     { label: "OUR ROSTER", href: "/talent-management/roster" },
     { label: "OUR WORK", href: "/talent-management/work" },
@@ -41,7 +41,7 @@ const navigationConfig: Record<string, NavItem[]> = {
   ],
   influencer: [
     { label: "HOME", href: "/" },
-    { label: "ABOUT", href: "/influencer-marketing/about" },
+    { label: "ABOUT", href: "/about" },
     { label: "OUR SERVICES", href: "/influencer-marketing/services" },
     { label: "OUR WORK", href: "/influencer-marketing/work" },
     { label: "CONTACT", href: "/influencer-marketing/contact" },

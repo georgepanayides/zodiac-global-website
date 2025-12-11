@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@tsparticles/plugin-canvas-mask": "^3.9.1",
     "@tsparticles/plugin-emitters": "^3.9.1",
     "@tsparticles/plugin-polygon-mask": "^3.9.1",
     "@tsparticles/react": "^3.0.0",
