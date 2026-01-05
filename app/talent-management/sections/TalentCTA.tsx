@@ -1,30 +1,47 @@
+"use client";
+
 import FadeIn from "@/components/motion/FadeIn";
 import Link from "next/link";
+import { motion } from "motion/react";
+import HeartParticles from "@/components/motion/HeartParticles";
 
 export default function TalentCTA() {
   return (
-    <section className="py-32 bg-black relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/5 pointer-events-none" />
+    <section className="py-32 relative overflow-hidden bg-black flex items-center justify-center">
+      {/* Background Glow */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-[600px] h-[600px] bg-gradient-to-r from-zodiac-900/20 to-purple-900/20 rounded-full blur-[120px] animate-pulse" />
+      </div>
+
       <div className="container mx-auto px-6 relative z-10 text-center">
         <FadeIn>
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter">
-            YOU HAVE THE TALENT. <br />
-            <span className="text-white/40">WE HAVE THE BLUEPRINT.</span>
-          </h2>
+          <div className="relative inline-block">
+            <HeartParticles />
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-cream-100 tracking-tighter leading-[0.9] mb-8">
+              READY TO <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-zodiac-500 via-cream-100/35 to-zodiac-500/50">
+                LEVEL UP?
+              </span>
+            </h2>
+          </div>
         </FadeIn>
 
         <FadeIn delay={0.2}>
-          <p className="text-xl text-white/60 max-w-2xl mx-auto mb-12">
-            Join a roster of elite creators who are redefining the industry.
+          <p className="text-xl text-white/60 max-w-2xl mx-auto mb-12 font-light">
+            Join a roster of elite talent. Let&apos;s build your legacy together.
           </p>
         </FadeIn>
 
         <FadeIn delay={0.4}>
-          <Link 
-            href="/contact?tab=talent" 
-            className="inline-block px-10 py-4 bg-white text-black rounded-full font-bold text-lg hover:bg-gray-200 transition-colors"
-          >
-            Apply to Join
+          <Link href="/contact" className="inline-block group">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-10 py-5 bg-white text-black rounded-full font-bold text-lg tracking-tight hover:bg-gray-100 transition-colors relative overflow-hidden"
+            >
+              <span className="relative z-10">Apply to Join</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-zodiac-500/5 to-cream-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </motion.button>
           </Link>
         </FadeIn>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { easeOut, motion } from "motion/react";
 
 interface FadeInProps {
   children: React.ReactNode;
@@ -28,7 +28,7 @@ export default function FadeIn({
       transition: {
         duration: 0.8,
         delay: delay,
-        ease: [0.22, 1, 0.36, 1]
+        ease: easeOut
       }
     }
   };

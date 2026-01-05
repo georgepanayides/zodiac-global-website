@@ -15,7 +15,6 @@ export default function AboutPage() {
         <AboutHero />
         <div className="bg-black relative z-20">
           <OurPhilosophy />
-          <Values />
           <Team />
           <CTA />
         </div>

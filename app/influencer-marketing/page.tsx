@@ -5,16 +5,16 @@ import CaseStudy from "./sections/CaseStudies";
 import HowItWorks from "./sections/HowItWorks";
 import Testimonials from "./sections/Testimonials";
 import CTA from "./sections/CTA";
+import WhatWeDo from "./sections/WhatWeDo";
 
 export default function InfluencerMarketing() {
   return (
     <main>
       <HeroSection />
       <BrandsTicker />
-      <CaseStudy />
-      <ZodiacNumbers />
+      <WhatWeDo />
       <HowItWorks />
-      <Testimonials />
+      <CaseStudy />
       <CTA />
     </main>
   );

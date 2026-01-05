@@ -19,7 +19,7 @@ export default function Footer() {
               </span>
               <a
                 href="mailto:Info@zodiacglobal.com"
-                className="text-3xl md:text-5xl font-bold hover:text-cream transition-colors leading-tight block"
+                className="text-xl md:text-2xl font-bold hover:text-cream transition-colors leading-tight block"
               >
                 info@
                 <br />

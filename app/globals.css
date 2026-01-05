@@ -40,9 +40,35 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-zodiac: #4D0011;
-  --color-cream: #E4E2DD;
   --font-sans: var(--font-aileron);
+
+  /* Zodiac Palette */
+  --color-zodiac: #4D0011;
+  --color-zodiac-50: #fff0f3;
+  --color-zodiac-100: #fee1e7;
+  --color-zodiac-200: #febac9;
+  --color-zodiac-300: #ff8da6;
+  --color-zodiac-400: #fe577c;
+  --color-zodiac-500: #ff083f;
+  --color-zodiac-600: #d1002e;
+  --color-zodiac-700: #a00023;
+  --color-zodiac-800: #740019;
+  --color-zodiac-900: #4d0011;
+  --color-zodiac-950: #2c0009;
+
+  /* Cream Palette */
+  --color-cream: #E4E2DD;
+  --color-cream-50: #f1f0ed;
+  --color-cream-100: #e4e2dd;
+  --color-cream-200: #d3cfc7;
+  --color-cream-300: #c0bbaf;
+  --color-cream-400: #a8a292;
+  --color-cream-500: #857d69;
+  --color-cream-600: #676152;
+  --color-cream-700: #4d483d;
+  --color-cream-800: #35322a;
+  --color-cream-900: #1f1e19;
+  --color-cream-950: #12110e;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -16,17 +16,10 @@ const navigationConfig: Record<string, NavItem[]> = {
     { label: "HOME", href: "/" },
     { label: "ABOUT", href: "/about" },
     {
-      label: "TALENT MANAGEMENT",
+      label: "SERVICES",
       dropdown: [
-        { label: "Services", href: "/talent-management/services" },
-        { label: "Our Work", href: "/talent-management/work" },
-      ],
-    },
-    {
-      label: "INFLUENCER MARKETING",
-      dropdown: [
-        { label: "Services", href: "/influencer-marketing/services" },
-        { label: "Our Work", href: "/influencer-marketing/work" },
+        { label: "Influencer Marketing", href: "/influencer-marketing" },
+        { label: "Talent Management", href: "/talent-management" },
       ],
     },
     { label: "CONTACT", href: "/contact" },
@@ -34,10 +27,16 @@ const navigationConfig: Record<string, NavItem[]> = {
   talent: [
     { label: "HOME", href: "/" },
     { label: "ABOUT", href: "/about" },
-    { label: "OUR SERVICES", href: "/talent-management/services" },
+    {
+      label: "SERVICES",
+      dropdown: [
+        { label: "Influencer Marketing", href: "/influencer-marketing" },
+        { label: "Talent Management", href: "/talent-management" },
+      ],
+    },
     { label: "OUR ROSTER", href: "/talent-management/roster" },
     { label: "OUR WORK", href: "/talent-management/work" },
-    { label: "CONTACT", href: "/talent-management/contact" },
+    { label: "CONTACT", href: "/contact" },
   ],
   influencer: [
     { label: "HOME", href: "/" },
@@ -65,7 +64,7 @@ export default async function Header() {
   const navItems = navigationConfig[variant];
 
   return (
-    <header className="sticky top-0 left-0 right-0 z-50 backdrop-blur-xs bg-black/10 border-b border-white/20 -mb-20">
+    <header className="sticky top-0 left-0 right-0 z-50 backdrop-blur-sm bg-black/10 border-b border-cream-100/20 -mb-20">
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -87,22 +86,22 @@ export default async function Header() {
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className="text-white text-sm font-semibold hover:text-white/80 transition-colors"
+                    className="text-cream-100 text-sm font-semibold hover:text-cream-100/80 transition-colors"
                   >
                     {item.label}
                   </Link>
                 ) : (
                   <>
-                    <button className="text-white text-sm font-semibold hover:text-white/80 transition-colors">
+                    <button className="text-cream-100 text-sm font-semibold hover:text-cream-100/80 transition-colors">
                       {item.label}
                     </button>
                     {item.dropdown && (
-                      <div className="absolute top-full left-0 mt-2 bg-zodiac border border-white/10 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[200px]">
+                      <div className="absolute top-full left-0 mt-2 bg-zodiac-900 border border-cream-100/10 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[200px]">
                         {item.dropdown.map((dropItem) => (
                           <Link
                             key={dropItem.href}
                             href={dropItem.href}
-                            className="block px-6 py-3 text-white text-sm hover:bg-white/10 first:rounded-t-lg last:rounded-b-lg transition-colors"
+                            className="block px-6 py-3 text-cream-100 text-sm hover:bg-cream-100/10 first:rounded-t-lg last:rounded-b-lg transition-colors"
                           >
                             {dropItem.label}
                           </Link>

@@ -28,8 +28,9 @@ export default function NotFound() {
             </p>
 
             <Link href="/" className="inline-block group">
-              <AnimatedButton
+              <AnimatedButton 
                 className="px-8 py-4 bg-white text-black rounded-full font-bold text-sm tracking-wide uppercase hover:bg-gray-100 transition-colors relative overflow-hidden"
+                href="/"
               >
                 <span className="relative z-10">Return Home</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

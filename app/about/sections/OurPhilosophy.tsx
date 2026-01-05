@@ -25,18 +25,6 @@ export default function OurPhilosophy() {
               </p>
             </FadeIn>
 
-            <FadeIn delay={0.6}>
-              <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/10">
-                <div>
-                  <h3 className="text-3xl font-bold text-white mb-2">500M+</h3>
-                  <p className="text-sm text-white/40 uppercase tracking-widest">Total Reach</p>
-                </div>
-                <div>
-                  <h3 className="text-3xl font-bold text-white mb-2">2.5K+</h3>
-                  <p className="text-sm text-white/40 uppercase tracking-widest">Campaigns</p>
-                </div>
-              </div>
-            </FadeIn>
           </div>
         </div>
       </div>

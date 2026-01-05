@@ -33,7 +33,7 @@ export default function HowItWorks() {
     <section className="py-24 bg-black relative overflow-hidden">
       <div className="container mx-auto px-6">
         <FadeIn>
-          <h2 className="text-5xl md:text-7xl font-bold text-cream text-center mb-16 tracking-tight">
+          <h2 className="text-5xl md:text-7xl font-bold text-cream text-center mb-20 tracking-tight">
             How it works
           </h2>
         </FadeIn>
