@@ -43,7 +43,7 @@ type ItemDef = MediaItem & {
 const DEFAULT_ITEMS: MediaItem[] = [
   {
     type: 'video',
-    src: '/videos/zodiac-short-video-1.mp4',
+    src: 'https://cdn.zodiacglobal.com/zodiac-short-video-1.mp4',
     alt: 'Zodiac Global Video 1'
   },
   {
@@ -53,7 +53,7 @@ const DEFAULT_ITEMS: MediaItem[] = [
   },
   {
     type: 'video',
-    src: '/videos/zodiac-short-video-3.mp4',
+    src: 'https://cdn.zodiacglobal.com/zodiac-short-video-3.mp4',
     alt: 'Zodiac Global Video 3'
   },
   {
@@ -63,17 +63,17 @@ const DEFAULT_ITEMS: MediaItem[] = [
   },
   {
     type: 'video',
-    src: '/videos/zodiac-short-video-5.mp4',
+    src: 'https://cdn.zodiacglobal.com/zodiac-short-video-5.mp4',
     alt: 'Zodiac Global Video 5'
   },
   {
     type: 'video',
-    src: '/videos/zodiac-short-video-5.mp4',
+    src: 'https://cdn.zodiacglobal.com/zodiac-short-video-5.mp4',
     alt: 'Zodiac Global Video 5'
   },
   {
     type: 'video',
-    src: '/videos/zodiac-short-video-5.mp4',
+    src: 'https://cdn.zodiacglobal.com/zodiac-short-video-5.mp4',
     alt: 'Zodiac Global Video 5'
   }
 ];

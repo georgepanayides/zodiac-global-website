@@ -16,7 +16,7 @@ export default function ContactHero() {
           playsInline 
           className="w-full h-full object-cover rounded-3xl grayscale"
         >
-          <source src="/videos/zodiac-short-video-1.mp4" type="video/mp4" />
+          <source src="https://cdn.zodiacglobal.com/zodiac-short-video-1.mp4" type="video/mp4" />
         </video>
       </div>
 
