@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   description: "Talent Management & Influencer Marketing",
 };
 
+export const dynamic = "force-static";
+
 export default function RootLayout({
   children,
 }: Readonly<{
