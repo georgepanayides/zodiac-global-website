@@ -18,13 +18,13 @@ export default function ContactFormSection() {
             <div className="p-1 bg-white/5 rounded-full border border-white/10 inline-flex relative">
               {[
                 { id: "brand", label: "I'm a Brand" },
-                { id: "talent", label: "I'm Talent" }
+                { id: "talent", label: "I'm a Creator" }
               ].map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as "brand" | "talent")}
-                  className={`px-8 py-3 rounded-full text-sm font-medium tracking-wider uppercase transition-all duration-300 relative z-10 ${
-                    activeTab === tab.id ? "text-black" : "text-white/60 hover:text-white"
+                  className={`px-8 py-3 rounded-full text-sm font-medium tracking-wider uppercase transition-all duration-300 relative z-10 cursor-pointer ${
+                    activeTab === tab.id ? "text-zodiac-800 font-semibold" : "text-white/60 hover:text-white"
                   }`}
                 >
                   {tab.label}
@@ -41,7 +41,7 @@ export default function ContactFormSection() {
           </div>
 
           {/* Forms */}
-          <div className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-sm">
+          <div className="md:bg-white/5 md:border border-white/10 rounded-3xl md:p-12 backdrop-blur-sm">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}

@@ -2,71 +2,41 @@ import Image from "next/image";
 import Link from "next/link";
 import Ticker from "@/components/motion/Ticker";
 import VideoCard from "@/components/ui/cards/VideoCard";
+import { CDN_VIDEOS } from "@/lib/constants";
+import { IoMegaphoneOutline, IoPeopleOutline } from "react-icons/io5";
 
 export default function Home() {
-  // Video paths
-  const allVideos = [
-    "https://cdn.zodiacglobal.com/SnapInsta.to_AQNvn5_RWdOJvK1m2cbuIB56uk7dXvg_2xq5w5w6HuT6fUOkUm6keo80B8Kk3Q9Ox_-0_1HbjFAS5gb-QYgQiqKyqieZaZdsTS-_Q2c.mp4",
-    "https://cdn.zodiacglobal.com/SnapInsta.to_AQOlJmHo5WHvklpBrxqx4Ju7vZTt6v-lmqspQ8qNMQ5fGb5naAkB_pj405Kji-k5ZXqbX3rUXqkB9kzTPP62udcDoRIUUkNNj4wdM0Q.mp4",
-    "https://cdn.zodiacglobal.com/SnapInsta.to_AQPljAyUl8vbBITOW4fOJEyxMxGGZAOES2EAgT0Y5jwsokoqIDQdJCVc4DWZFuZlo8PgoxYgWh7A0D4ZZ-i6OCxDrwFujdxRugu3pJ0.mp4",
-    "https://cdn.zodiacglobal.com/SnapTikZ.App_7515732061341125910_hd.mp4",
-    "https://cdn.zodiacglobal.com/ssstik.io_%40leahlouvaine_1754284735770.mp4",
-    "https://cdn.zodiacglobal.com/ssstik.io_1756449918293.mp4",
-    "https://cdn.zodiacglobal.com/zodiac-short-video-1.mp4",
-    "/videos/zodiac-short-video-2.mp4",
-    "https://cdn.zodiacglobal.com/zodiac-short-video-3.mp4",
-    "/videos/zodiac-short-video-4.mp4",
-    "https://cdn.zodiacglobal.com/zodiac-short-video-5.mp4",
-  ];
+  const baseVideos = CDN_VIDEOS;
 
-  // Helper to shuffle array (removed to avoid impure function error)
-  
+  const getColumnVideos = (columnIndex: number, count: number) => {
+    if (baseVideos.length === 0) return [];
+
+    const start = (columnIndex * 3) % baseVideos.length;
+    return Array.from({ length: count }, (_, i) => baseVideos[(start + i) % baseVideos.length]);
+  };
+
   // Create 6 columns with different videos and directions
-  const columns = [
-    { 
-      videos: [allVideos[0], allVideos[5], allVideos[2], allVideos[8], allVideos[1], allVideos[9], allVideos[3], allVideos[7], allVideos[10], allVideos[4], allVideos[6]], 
-      direction: "up" as const, 
-      duration: 65 
-    },
-    { 
-      videos: [allVideos[5], allVideos[2], allVideos[8], allVideos[1], allVideos[9], allVideos[3], allVideos[7], allVideos[0], allVideos[10], allVideos[4], allVideos[6]], 
-      direction: "down" as const, 
-      duration: 75 
-    },
-    { 
-      videos: [allVideos[10], allVideos[4], allVideos[1], allVideos[6], allVideos[2], allVideos[8], allVideos[5], allVideos[9], allVideos[0], allVideos[3], allVideos[7]], 
-      direction: "up" as const, 
-      duration: 60 
-    },
-    { 
-      videos: [allVideos[3], allVideos[9], allVideos[5], allVideos[0], allVideos[7], allVideos[1], allVideos[4], allVideos[10], allVideos[6], allVideos[8], allVideos[2]], 
-      direction: "down" as const, 
-      duration: 70 
-    },
-    { 
-      videos: [allVideos[8], allVideos[0], allVideos[6], allVideos[4], allVideos[10], allVideos[5], allVideos[2], allVideos[7], allVideos[1], allVideos[9], allVideos[3]], 
-      direction: "up" as const, 
-      duration: 68 
-    },
-    { 
-      videos: [allVideos[1], allVideos[7], allVideos[3], allVideos[9], allVideos[0], allVideos[6], allVideos[8], allVideos[2], allVideos[5], allVideos[10], allVideos[4]], 
-      direction: "down" as const, 
-      duration: 62 
-    },
-  ];
+  const columns = Array.from({ length: 6 }, (_, columnIndex) => ({
+    videos: getColumnVideos(columnIndex, 16),
+    direction: (columnIndex % 2 === 0 ? "up" : "down") as "up" | "down",
+    duration: 60 + (columnIndex % 3) * 6,
+  }));
 
   return (
     <div className="relative flex min-h-screen items-center justify-center bg-zodiac overflow-hidden">
       {/* Animated Video Background */}
       <div className="absolute inset-0 flex gap-4">
         {columns.map((column, columnIndex) => (
-          <div key={columnIndex} className="flex-1 rotate-2">
+          <div 
+            key={columnIndex} 
+            className={`flex-1 rotate-2 ${columnIndex > 2 ? 'hidden md:block' : ''}`}
+          >
             <Ticker direction={column.direction} duration={column.duration} className="h-screen">
               {column.videos.map((video, videoIndex) => (
                 <VideoCard
                   key={`${columnIndex}-${videoIndex}`}
                   videoSrc={video}
-                  className="w-full h-[400px]"
+                  className="w-full md:h-[400px] h-42"
                 />
               ))}
             </Ticker>
@@ -77,39 +47,56 @@ export default function Home() {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/30 w-full h-full"/>
       
-      <main className="flex flex-col items-center justify-center px-8 z-10">
+      <main className="flex flex-col items-center justify-center px-4 md:px-8 z-10 w-full max-w-5xl mx-auto">
         {/* Logo and Text Section */}
-        <div className="flex items-center gap-8 mb-12">
+        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 mb-8 md:mb-12 w-full justify-center">
           
           {/* Text */}
-          <div>
-            <div className="flex w-full items-center justify-end gap-12">
+          <div className="w-full text-center md:text-right">
+            <div className="flex flex-col md:flex-row w-full items-center justify-center md:justify-end gap-4 md:gap-12">
               {/* Logo */}
-              <div className="flex-shrink-0 h-42 w-42">
+              <div className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 relative">
                 <Image
                 src={"/logo/zodiacgloballogo.png"}
-                width={600}
-                height={500}
+                fill
+                className="object-contain"
                 alt="Zodiac Global Logo"
                 />
               </div>
-              <h1 className="text-[10rem] font-semibold text-cream leading-none text-right">
+              <h1 className="text-6xl md:text-[8rem] lg:text-[10rem] font-semibold text-cream leading-[0.8] text-center md:text-right tracking-tighter">
                 zodiac
               </h1>
             </div>
-            <h2 className="text-[10rem] font-semibold text-cream leading-none text-right">
+            <h2 className="text-6xl md:text-[8rem] lg:text-[10rem] font-semibold text-cream leading-[0.8] text-center md:text-right tracking-tighter mt-2 md:mt-0">
               global group
             </h2>
           </div>
         </div>
 
         {/* Buttons */}
-        <div className="flex gap-6">
-          <Link href="/talent-management" className="px-12 py-4 bg-cream text-black text-3xl font-normal rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
-            Talent Management
+        <div className="flex flex-col md:flex-row gap-4 md:gap-8 w-full md:w-auto px-4">
+          <Link href="/talent-management" className="group flex items-center justify-between md:justify-start gap-4 w-full md:w-auto p-1">
+            <div className="flex-1 md:flex-initial px-6 py-4 md:px-10 md:py-5 bg-cream/75 backdrop-blur-xs border border-white/20 rounded-xl hover:bg-cream transition-all duration-300">
+              <span className="inline-flex items-center gap-3 text-lg md:text-2xl font-bold tracking-tight text-zodiac uppercase whitespace-nowrap">
+                <IoPeopleOutline className="w-5 h-5 md:w-6 md:h-6" aria-hidden />
+                <span>Talent Management</span>
+              </span>
+            </div>
+            <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-white/20 flex items-center justify-center bg-white/5 backdrop-blur-md group-hover:bg-cream group-hover:text-black group-hover:rotate-45 transition-all duration-300 text-cream shrink-0">
+               <span className="text-xl md:text-2xl">↗</span>
+            </div>
           </Link>
-          <Link href="/influencer-marketing" className="px-12 py-4 bg-cream text-black text-3xl font-normal rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
-            Influencer Marketing
+
+          <Link href="/influencer-marketing" className="group flex items-center justify-between md:justify-start gap-4 w-full md:w-auto p-1">
+            <div className="flex-1 md:flex-initial px-6 py-4 md:px-10 md:py-5 bg-cream/75 backdrop-blur-xs border border-white/20 rounded-xl hover:bg-cream transition-all duration-300">
+              <span className="inline-flex items-center gap-3 text-lg md:text-2xl font-bold tracking-tight text-zodiac uppercase whitespace-nowrap">
+                <IoMegaphoneOutline className="w-5 h-5 md:w-6 md:h-6" aria-hidden />
+                <span>Influencer Marketing</span>
+              </span>
+            </div>
+            <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-white/20 flex items-center justify-center bg-cream/25 backdrop-blur-md group-hover:bg-cream group-hover:text-black group-hover:rotate-45 transition-all duration-300 text-cream shrink-0">
+               <span className="text-xl md:text-2xl">↗</span>
+            </div>
           </Link>
         </div>
       </main>

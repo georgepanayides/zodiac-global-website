@@ -1,9 +1,10 @@
 "use client";
 
 import { easeOut, motion } from "motion/react";
+import type { ReactNode } from "react";
 
 interface FadeInProps {
-  children: React.ReactNode;
+  children: ReactNode;
   delay?: number;
   className?: string;
   direction?: "up" | "down" | "left" | "right" | "none";
@@ -37,7 +38,7 @@ export default function FadeIn({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, amount: 0.2 }}
       variants={variants}
       className={className}
     >

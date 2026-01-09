@@ -12,8 +12,6 @@ export function Slider({ items, className = "" }: SliderProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-
-  const [isInView, setIsInView] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
@@ -21,9 +19,7 @@ export function Slider({ items, className = "" }: SliderProps) {
 
     observerRef.current = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-        }
+        void entry;
       },
       { threshold: 0.1 }
     );

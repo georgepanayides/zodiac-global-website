@@ -1,6 +1,10 @@
 import FadeIn from "@/components/motion/FadeIn";
+import { CDN_VIDEOS } from "@/lib/constants";
 
 export default function ContactHero() {
+  const leftVideo = CDN_VIDEOS[0] ?? "";
+  const rightVideo = CDN_VIDEOS[1] ?? "";
+
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center bg-black overflow-hidden pt-32 pb-20">
       {/* Abstract Background Elements */}
@@ -16,7 +20,7 @@ export default function ContactHero() {
           playsInline 
           className="w-full h-full object-cover rounded-3xl grayscale"
         >
-          <source src="https://cdn.zodiacglobal.com/zodiac-short-video-1.mp4" type="video/mp4" />
+          {leftVideo ? <source src={leftVideo} type="video/mp4" /> : null}
         </video>
       </div>
 
@@ -28,7 +32,7 @@ export default function ContactHero() {
           playsInline 
           className="w-full h-full object-cover rounded-3xl grayscale"
         >
-          <source src="/videos/zodiac-short-video-2.mp4" type="video/mp4" />
+          {rightVideo ? <source src={rightVideo} type="video/mp4" /> : null}
         </video>
       </div>
 

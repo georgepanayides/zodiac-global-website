@@ -37,6 +37,11 @@
   --color-cream: #E4E2DD;
 }
 
+::selection {
+  background-color: var(--color-zodiac);
+  color: var(--color-cream);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -81,6 +86,7 @@
 body {
   color: var(--foreground);
   font-family: var(--font-aileron);
+  overflow-x: hidden;
 }
 
 /* Heading styles with Aileron Bold */
@@ -95,4 +101,21 @@ h1, h2, h3, h4, h5, h6 {
 p, span, div {
   font-family: var(--font-aileron);
   font-weight: 400;
+}
+
+@keyframes zodiac-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.zodiac-marquee {
+  animation: zodiac-marquee var(--zodiac-marquee-duration, 40s) linear infinite;
+}
+
+.zodiac-marquee--reverse {
+  animation-direction: reverse;
 }

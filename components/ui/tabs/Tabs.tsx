@@ -19,15 +19,15 @@ export default function Tabs({ tabs, defaultTab }: TabsProps) {
   return (
     <div className="w-full">
       {/* Tab Headers */}
-      <div className="flex gap-2 mb-6">
+      <div className="flex gap-2 mb-6 flex-wrap">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-6 py-2 font-semibold text-sm transition-all cursor-pointer rounded-xl border ${
+            className={`px-6 py-2 font-bold text-sm transition-all cursor-pointer rounded-full uppercase tracking-wider border ${
               activeTab === tab.id
-                ? "bg-zodiac text-cream border-zodiac/50 rounded-xl"
-                : "text-white/40 border-transparent hover:text-white hover:bg-white/5"
+                ? "bg-cream text-zodiac border-[#E8DCC6]"
+                : "text-white/60 border-white/10 hover:text-white hover:border-white/30 hover:bg-white/5"
             }`}
           >
             {tab.label}

@@ -13,15 +13,15 @@ interface AnimatedButtonProps {
 
 export default function AnimatedButton({ children, className = "", onClick, href }: AnimatedButtonProps) {
   return (
-    <Link href={href} passHref>
-      <motion.button
+    <Link href={href} passHref className="inline-block">
+      <motion.div
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className={`px-8 py-4 bg-white text-black rounded-full font-bold text-lg tracking-tight hover:bg-gray-100 transition-colors ${className}`}
+        className={`px-8 py-4 bg-white text-black rounded-full font-bold text-lg tracking-tight hover:bg-gray-100 transition-colors cursor-pointer ${className}`}
         onClick={onClick}
       >
         {children}
-      </motion.button>
+      </motion.div>
     </Link>
   );
 }

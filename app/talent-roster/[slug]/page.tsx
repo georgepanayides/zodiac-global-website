@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import ProfileHero from "./sections/ProfileHero";
 import ProfileStats from "./sections/ProfileStats";
 import RecentWork from "./sections/RecentWork";

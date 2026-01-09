@@ -1,12 +1,12 @@
-import React from "react";
+import type { ReactNode } from "react";
 
 interface BentoGridProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }
 
 interface BentoItemProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   colSpan?: number;
   rowSpan?: number;
@@ -28,20 +28,32 @@ export function BentoItem({
   colSpan = 1,
   rowSpan = 1,
 }: BentoItemProps) {
+  const colSpanClass =
+    {
+      1: "",
+      2: "md:col-span-2",
+      3: "md:col-span-3",
+      4: "md:col-span-4",
+    }[colSpan] ?? "";
+
+  const rowSpanClass =
+    {
+      1: "",
+      2: "md:row-span-2",
+      3: "md:row-span-3",
+      4: "md:row-span-4",
+    }[rowSpan] ?? "";
+
   return (
     <div
       className={`
         bg-white/5 border border-white/10 rounded-3xl p-6 
         hover:bg-white/10 transition-colors duration-300
         flex flex-col justify-between
-        ${colSpan > 1 ? `md:col-span-${colSpan}` : ""}
-        ${rowSpan > 1 ? `md:row-span-${rowSpan}` : ""}
+        ${colSpanClass}
+        ${rowSpanClass}
         ${className}
       `}
-      style={{
-        gridColumn: `span ${colSpan}`,
-        gridRow: `span ${rowSpan}`,
-      }}
     >
       {children}
     </div>

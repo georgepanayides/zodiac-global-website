@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import { ReactNode } from "react";
 
 interface HorizontalTickerProps {
@@ -16,29 +15,24 @@ export default function HorizontalTicker({
   direction = "left",
   className = "" 
 }: HorizontalTickerProps) {
+  const animationClass =
+    direction === "left" ? "zodiac-marquee" : "zodiac-marquee zodiac-marquee--reverse";
+
   return (
     <div className={`overflow-hidden ${className}`}>
-      <motion.div
-        className="flex"
+      <div
+        className={`inline-flex w-max will-change-transform ${animationClass}`}
         style={{
-          x: direction === "left" ? "0%" : "-100%",
-        }}
-        animate={{
-          x: direction === "left" ? "-100%" : "0%",
-        }}
-        transition={{
-          duration: duration,
-          repeat: Infinity,
-          ease: "linear",
-          repeatType: "loop",
+          // Used by the CSS animation in globals.css
+          ["--zodiac-marquee-duration" as any]: `${duration}s`,
         }}
       >
-        {/* Quadruple duplicate content for seamless loop */}
+        {/* Duplicate once: translateX(-50%) cycles seamlessly */}
         <div className="flex gap-8 shrink-0 pr-8">{children}</div>
-        <div className="flex gap-8 shrink-0 pr-8">{children}</div>
-        <div className="flex gap-8 shrink-0 pr-8">{children}</div>
-        <div className="flex gap-8 shrink-0 pr-8">{children}</div>
-      </motion.div>
+        <div className="flex gap-8 shrink-0 pr-8" aria-hidden="true">
+          {children}
+        </div>
+      </div>
     </div>
   );
 }

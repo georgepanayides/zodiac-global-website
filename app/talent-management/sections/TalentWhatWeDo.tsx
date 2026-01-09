@@ -9,36 +9,29 @@ export default function TalentWhatWeDo() {
           {/* Text Content */}
           <div className="relative z-10 order-2 lg:order-1">
             <FadeIn>
-            <div className="absolute -top-40 -left-100 w-164 h-164 rounded-full border border-cream-900 bg-zodiac-900/50 -z-1" />
+            <div className="absolute -top-15 -left-50 md:-top-25 md:-left-100 w-90 h-90 md:w-164 md:h-164 rounded-full border border-cream-900 bg-zodiac-900/50 -z-1" />
             </FadeIn>
             <FadeIn>
               <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-cream-100 mb-8 leading-tight">
-                Elevating Talent to <br />
-                <span className="text-white/40">Global Icons.</span>
+                360° TALENT <br />
+                <span className="text-white/40">MANAGEMENT.</span>
               </h3>
             </FadeIn>
 
             <FadeIn delay={0.2}>
               <div className="space-y-6 text-lg text-white/60 font-light leading-relaxed">
                 <p>
-                  We don&apos;t just represent talent; we build careers. Our 360° management approach ensures that every aspect of your personal brand is curated for long-term success.
+                  Zodiac Global is a talent management agency operating across the UK and the Middle East, specialising in the representation and commercial growth of high-profile creators.
                 </p>
                 <p>
-                  From strategic brand partnerships to content development and legal support, we provide the infrastructure you need to focus on what you do best: creating.
+                  We work closely with talent across food, fashion, sport, lifestyle entertainment and more focusing on long-term value creation rather than short-term brand deals. Our approach is centred on helping creators evolve into sustainable personal brands, building IP, launching creator-led ventures, and developing scalable businesses alongside traditional partnerships.
                 </p>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.4}>
-              <div className="mt-10 flex flex-wrap gap-4">
-                {["Brand Partnerships", "Career Strategy", "Legal & Finance", "Content Growth"].map((item, i) => (
-                  <span 
-                    key={i}
-                    className="px-4 py-2 rounded-full border border-white/10 text-cream-100/80 text-sm transition-colors cursor-default bg-cream-900"
-                  >
-                    {item}
-                  </span>
-                ))}
+                <p>
+                  Zodiac Global handles everything from talent strategy and deal negotiation to campaign execution and commercial structuring.
+                </p>
+                <p>
+                  Zodiac Global has grown into a multi-market, multi-million-dollar agency with offices in Dubai and the UK, representing some of the most recognisable creators in the space and working with household-name brands across multiple sectors.
+                </p>
               </div>
             </FadeIn>
           </div>

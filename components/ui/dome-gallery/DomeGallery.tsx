@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useCallback } from 'react';
 import { useGesture } from '@use-gesture/react';
+import { CDN_VIDEOS } from '@/lib/constants';
 import './DomeGallery.css';
 
 // --- Types ---
@@ -40,43 +41,11 @@ type ItemDef = MediaItem & {
   sizeY: number;
 };
 
-const DEFAULT_ITEMS: MediaItem[] = [
-  {
-    type: 'video',
-    src: 'https://cdn.zodiacglobal.com/zodiac-short-video-1.mp4',
-    alt: 'Zodiac Global Video 1'
-  },
-  {
-    type: 'video',
-    src: '/videos/zodiac-short-video-2.mp4',
-    alt: 'Zodiac Global Video 2'
-  },
-  {
-    type: 'video',
-    src: 'https://cdn.zodiacglobal.com/zodiac-short-video-3.mp4',
-    alt: 'Zodiac Global Video 3'
-  },
-  {
-    type: 'video',
-    src: '/videos/zodiac-short-video-4.mp4',
-    alt: 'Zodiac Global Video 4'
-  },
-  {
-    type: 'video',
-    src: 'https://cdn.zodiacglobal.com/zodiac-short-video-5.mp4',
-    alt: 'Zodiac Global Video 5'
-  },
-  {
-    type: 'video',
-    src: 'https://cdn.zodiacglobal.com/zodiac-short-video-5.mp4',
-    alt: 'Zodiac Global Video 5'
-  },
-  {
-    type: 'video',
-    src: 'https://cdn.zodiacglobal.com/zodiac-short-video-5.mp4',
-    alt: 'Zodiac Global Video 5'
-  }
-];
+const DEFAULT_ITEMS: MediaItem[] = CDN_VIDEOS.map((src, i) => ({
+  type: 'video',
+  src,
+  alt: `Zodiac Global Video ${i + 1}`
+}));
 
 const DEFAULTS = {
   maxVerticalRotationDeg: 5,

@@ -5,9 +5,9 @@ import CountUp from "@/components/animations/CountUp";
 import RevenueChart from "../../../components/animations/RevenueChart";
 import DiagonalBrandTicker from "../../../components/animations/DiagonalBrandTicker";
 import AudiencePulse from "../../../components/animations/AudiencePulse";
-import GlobalSpin from "./GlobalSpin";
-import LegalShield from "./LegalShield";
-import { IoTrendingUp, IoPeople, IoBriefcase, IoGlobeOutline, IoShieldCheckmark, IoRocket } from "react-icons/io5";
+import GlobalSpin from "../../../components/animations/GlobalSpin";
+import LegalShield from "../../../components/animations/LegalShield";
+import { IoTrendingUp, IoPeople, IoBriefcase, IoGlobeOutline, IoRocket } from "react-icons/io5";
 
 export default function TalentStats() {
   return (
@@ -30,11 +30,11 @@ export default function TalentStats() {
               </div>
               <div>
                 <div className="text-5xl md:text-7xl font-bold text-white mb-4 flex items-baseline gap-2 tracking-tight">
-                  $<CountUp to={12} duration={2.5} />M+
+                  $<CountUp to={10} duration={2.5} />M+
                 </div>
                 <h3 className="text-xl text-cream-100 font-medium mb-3">Revenue Generated</h3>
                 <p className="text-white/60 text-sm leading-relaxed max-w-md">
-                  We don&apos;t just negotiate deals; we build empires. Our strategic partnerships have generated over $12M in revenue for our talent roster.
+                  We don&apos;t just negotiate deals; we build empires. Our strategic partnerships have generated over $10M in revenue for our talent roster.
                 </p>
               </div>
             </div>
@@ -54,7 +54,7 @@ export default function TalentStats() {
               </div>
               <div>
                 <div className="text-3xl font-bold text-white mb-1">
-                  <CountUp to={250} duration={2} />+
+                  <CountUp to={1000} duration={2} />+
                 </div>
                 <p className="text-white/60 text-sm">Global Brand Partners</p>
               </div>
@@ -70,9 +70,9 @@ export default function TalentStats() {
               </div>
               <div>
                 <div className="text-3xl font-bold text-white mb-1">
-                  <CountUp to={85} duration={2} />M+
+                  <CountUp to={1} duration={2} />B
                 </div>
-                <p className="text-white/60 text-sm">Total Audience Reach</p>
+                <p className="text-white/60 text-sm">Global Audience Reach</p>
               </div>
             </div>
           </BentoItem>
@@ -85,7 +85,7 @@ export default function TalentStats() {
                 <IoGlobeOutline className="text-cream-100" size={20} />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white mb-1">Global Reach</h3>
+                <h3 className="text-lg font-bold text-white mb-1">Global Clients</h3>
                 <p className="text-white/60 text-xs">
                   Campaigns executed in over 15 countries across 4 continents.
                 </p>
@@ -93,17 +93,17 @@ export default function TalentStats() {
             </div>
           </BentoItem>
 
-          {/* Legal & Protection */}
+          {/* Creator Brand / IP */}
           <BentoItem colSpan={1} rowSpan={1} className="group relative overflow-hidden">
              <LegalShield />
              <div className="flex flex-col h-full justify-between relative z-10">
               <div className="p-2 bg-white/10 rounded-lg w-fit backdrop-blur-sm">
-                <IoShieldCheckmark className="text-cream-100" size={20} />
+                <IoRocket className="text-cream-100" size={20} />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white mb-1">Legal Shield</h3>
-                <p className="text-white/60 text-xs">
-                  Full in-house legal support for contract negotiation and IP protection.
+                <h3 className="text-lg font-bold text-white mb-1">10+ Creator Brand / IP Launched</h3>
+                <p className="text-white/60 text-xs text-pretty">
+                  We help creators move beyond brand deals to build long-term businesses and ownable IP.
                 </p>
               </div>
             </div>

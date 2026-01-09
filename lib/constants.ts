@@ -1,0 +1,21 @@
+export const CDN_VIDEOS = [
+  "https://cdn.zodiacglobal.com/SnapInsta.to_AQNvn5_RWdOJvK1m2cbuIB56uk7dXvg_2xq5w5w6HuT6fUOkUm6keo80B8Kk3Q9Ox_-0_1HbjFAS5gb-QYgQiqKyqieZaZdsTS-_Q2c.mp4",
+  "https://cdn.zodiacglobal.com/SnapInsta.to_AQOlJmHo5WHvklpBrxqx4Ju7vZTt6v-lmqspQ8qNMQ5fGb5naAkB_pj405Kji-k5ZXqbX3rUXqkB9kzTPP62udcDoRIUUkNNj4wdM0Q.mp4",
+  "https://cdn.zodiacglobal.com/SnapInsta.to_AQPljAyUl8vbBITOW4fOJEyxMxGGZAOES2EAgT0Y5jwsokoqIDQdJCVc4DWZFuZlo8PgoxYgWh7A0D4ZZ-i6OCxDrwFujdxRugu3pJ0.mp4",
+  "https://cdn.zodiacglobal.com/SnapInsta.to_AQPniLWdglrBnRUc3h1RlF3UngQdzOG5gd-Vs4avl5Wm38iQVNN29GoMUsYmYf9UOPeoxZZd18UCrSA6Ox3KtPMEEbP4D4_L_OZIESw.mp4",
+  "https://cdn.zodiacglobal.com/SnapInsta.to_AQPxPO-IkKfTIEx6ZBzdpKsIuOyYxYBALvWMdBb6W0qTYINEsD0eOloMsKO57SmyJ4MMpojZMjupvI-9zH6xNx3rpalcfpa3pzgkHs4.mp4",
+  "https://cdn.zodiacglobal.com/SnapTikZ.App_7515732061341125910_hd.mp4",
+  "https://cdn.zodiacglobal.com/WhatsApp%20Video%202025-08-27%20at%2017.49.02.mp4",
+  "https://cdn.zodiacglobal.com/WhatsApp%20Video%202025-10-09%20at%2014.40.11.mp4",
+  "https://cdn.zodiacglobal.com/snaptik_7524712335752138006%20(2).mp4",
+  "https://cdn.zodiacglobal.com/ssstik.io_1756275702103.mp4",
+  "https://cdn.zodiacglobal.com/ssstik.io_1756449918293.mp4",
+  "https://cdn.zodiacglobal.com/ssstik.io_1759320169107.mp4",
+  "https://cdn.zodiacglobal.com/ssstik.io_1759735342060.mp4",
+  "https://cdn.zodiacglobal.com/ssstik.io_%40jedbarker_1755235369931.mp4",
+  "https://cdn.zodiacglobal.com/ssstik.io_%40leahlouvaine_1754284735770.mp4",
+  "https://cdn.zodiacglobal.com/v24044gl0000d0lk9hfog65s1vqtg8hg.mp4",
+  "https://cdn.zodiacglobal.com/zodiac-short-video-1.mp4",
+  "https://cdn.zodiacglobal.com/zodiac-short-video-3.mp4",
+  "https://cdn.zodiacglobal.com/zodiac-short-video-5.mp4"
+];

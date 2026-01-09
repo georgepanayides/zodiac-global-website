@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { HiHeart, HiEye, HiShare, HiUserGroup, HiCursorClick } from "react-icons/hi";
+import Image from "next/image";
+import { HiPlay } from "react-icons/hi2";
+import { cn } from "@/lib/utils";
 
 interface Stat {
   value: string;
@@ -14,7 +15,8 @@ export interface CaseStudyItem {
   id: string;
   title: string;
   description: string;
-  image: string; // URL to image
+  image: string;
+  video?: string;
   stats: Stat[];
 }
 
@@ -23,152 +25,236 @@ interface CaseStudyCarouselProps {
 }
 
 export default function CaseStudyCarousel({ items }: CaseStudyCarouselProps) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const [progress, setProgress] = useState<number[]>(new Array(items.length).fill(0));
+  const [isPaused, setIsPaused] = useState(false);
+
+  const handleVideoUpdate = (index: number) => {
+    const video = videoRefs.current[index];
+    if (video) {
+        const currentProgress = (video.currentTime / video.duration) * 100;
+        setProgress(prev => {
+            const newProgress = [...prev];
+            newProgress[index] = currentProgress;
+            return newProgress;
+        });
+        
+        if (currentProgress >= 99) {
+           video.currentTime = 0;
+           video.play();
+        }
+    }
+  };
+
+  const handleItemClick = (index: number) => {
+    if (activeIndex === index) {
+      setIsPaused(!isPaused);
+    } else {
+      setActiveIndex(index);
+      setIsPaused(false);
+    }
+  };
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveIndex((current) => (current + 1) % items.length);
-    }, 5000);
-
-    return () => clearInterval(timer);
-  }, [items.length, activeIndex]);
+    videoRefs.current.forEach((video, index) => {
+      if (video) {
+        if (index === activeIndex) {
+          video.muted = false; 
+          if (isPaused) {
+            video.pause();
+          } else {
+            video.play().catch(() => {});
+          }
+        } else {
+          video.pause();
+          video.currentTime = 0; 
+        }
+      }
+    });
+  }, [activeIndex, isPaused]);
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="relative w-full h-[80vh] min-h-[600px] overflow-hidden rounded-3xl">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="absolute inset-0"
-        >
-          {/* Background Image */}
-          <div className="absolute inset-0">
-            <Image
-              src={items[activeIndex].image}
-              alt={items[activeIndex].title}
-              fill
-              className="object-cover"
-              priority
-            />
-            {/* Overlay gradient */}
-            <div className="absolute inset-0 bg-black/40" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-          </div>
+    <div className="flex flex-col gap-6 w-full">
+      {/* Container: Vertical on Mobile (Tall), Horizontal on Desktop */}
+      <div className="flex flex-col md:flex-row gap-4 h-[1200px] md:h-[600px] w-full items-stretch">
+        {items.map((item, index) => {
+          const isActive = index === activeIndex;
+          const viewsStat = item.stats.find(s => s.label.toLowerCase().includes("views")) || item.stats[0];
 
-          {/* Content Container */}
-          <div className="relative h-full container mx-auto px-6 py-12 flex flex-col justify-end pb-24">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
-              
-              {/* Left Side: Text Content */}
-              <div className="space-y-6 max-w-2xl">
-                <motion.h2 
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-5xl md:text-7xl font-bold text-white leading-tight"
-                >
-                  {items[activeIndex].title}
-                </motion.h2>
-                <motion.p 
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  className="text-lg md:text-xl text-white/90 leading-relaxed"
-                >
-                  {items[activeIndex].description}
-                </motion.p>
-              </div>
+          return (
+            <motion.div
+              key={item.id}
+              layout
+              onClick={() => handleItemClick(index)}
+              className={cn(
+                "relative cursor-pointer group transition-all duration-500 ease-in-out flex flex-col",
+                isActive ? "flex-[5] md:flex-[2] border-white/40" : "flex-[1] border-white/10",
+                // Mobile: Ensure inactive items are small strips, active is large
+                !isActive && "min-h-[60px] md:min-h-0 md:min-w-[60px]"
+              )}
+              style={{ willChange: "flex-grow" }} 
+            >
+              {/* Card Box */}
+              <div
+                className={cn(
+                  "relative rounded-2xl overflow-hidden flex-1 min-h-0 border border-white/10",
+                  isActive ? "border-white/40" : "border-white/10"
+                )}
+              >
+                {/* Background Video/Image */}
+                <div className="absolute inset-0 bg-zinc-900">
+                  {item.video ? (
+                    <video
+                      ref={(el) => {
+                        videoRefs.current[index] = el;
+                      }}
+                      src={item.video}
+                      className="w-full h-full object-cover"
+                      muted
+                      loop={false}
+                      playsInline
+                      onTimeUpdate={() => handleVideoUpdate(index)}
+                    />
+                  ) : (
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover opacity-60"
+                    />
+                  )}
+                  {/* Overlay Gradient */}
+                  <div
+                    className={cn(
+                      "absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent transition-opacity duration-300",
+                      isActive ? "opacity-80" : "opacity-60 hover:opacity-70"
+                    )}
+                  />
+                </div>
 
-              {/* Right Side: Stats Grid - Dark Glass Cards */}
-              <div className="flex justify-end w-full lg:w-auto">
-                <div className="grid grid-cols-2 gap-4 w-full max-w-lg">
-                  {items[activeIndex].stats.map((stat, idx) => {
-                    const l = stat.label.toLowerCase();
-                    const Icon = (l.includes('view') || l.includes('reach') || l.includes('impression')) ? HiEye :
-                                 (l.includes('share')) ? HiShare :
-                                 (l.includes('follow') || l.includes('community')) ? HiUserGroup :
-                                 (l.includes('click') || l.includes('ctr')) ? HiCursorClick : HiHeart;
+                {/* Inactive State: Play Overlay */}
+                {!isActive && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 pointer-events-none px-6">
+                    <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:scale-110 transition-transform">
+                      <HiPlay className="w-6 h-6 text-white ml-1" />
+                    </div>
+                    <p className="md:hidden text-white/60 text-sm font-medium tracking-widest uppercase text-center line-clamp-2">
+                      {item.title}
+                    </p>
+                  </div>
+                )}
 
-                    return (
-                      <motion.div
-                        key={idx}
-                        initial={{ 
-                          opacity: 0,
-                          filter: "blur(8px)",
-                          y: 10
-                        }}
-                        animate={{ 
-                          opacity: 1,
-                          filter: "blur(0px)",
-                          y: 0
-                        }}
-                        transition={{ 
-                          delay: 0.6 + (idx * 0.12),
-                          duration: 1.4,
-                          ease: [0.2, 0.8, 0.2, 1]
-                        }}
-                        whileHover={{ y: -5, backgroundColor: "rgba(0,0,0,0.6)" }}
-                        className="group bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 flex flex-col items-start justify-between min-h-[140px] transition-all duration-300 hover:border-white/20 hover:shadow-2xl hover:shadow-black/20"
-                      >
-                        <div className="w-full flex justify-between items-start mb-4">
-                          <div className="p-2 rounded-lg bg-white/5 group-hover:bg-white/10 transition-colors">
-                            <Icon className="text-2xl text-white/80 group-hover:text-white transition-colors" />
-                          </div>
-                          <motion.div 
-                            initial={{ width: 0 }}
-                            whileHover={{ width: "100%" }}
-                            className="h-0.5 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                          />
+                {/* Inactive State: Vertical Text (Desktop) */}
+                {!isActive && (
+                  <div className="absolute inset-0 hidden md:flex flex-col items-center justify-end pb-8 pointer-events-none">
+                    <p className="vertical-text text-white/50 text-sm font-medium tracking-widest uppercase truncate w-6 writing-mode-vertical">
+                      <span className="block rotate-180" style={{ writingMode: "vertical-rl" }}>
+                        {item.title}
+                      </span>
+                    </p>
+                  </div>
+                )}
+
+                {/* Active State Content */}
+                <AnimatePresence mode="wait">
+                  {isActive && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="absolute inset-0 p-6 flex flex-col justify-end pointer-events-none"
+                    >
+                      {/* Status Indicator (Top Right) */}
+                      <div className="absolute top-6 right-6 pointer-events-auto">
+                        <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-md">
+                          {isPaused ? (
+                            <HiPlay className="w-4 h-4 text-white ml-0.5" />
+                          ) : (
+                            <span className="animate-pulse w-3 h-3 bg-red-500 rounded-full" />
+                          )}
                         </div>
-                        
+                      </div>
+
+                      <div className="space-y-4">
                         <div>
-                          <h3 className="text-3xl md:text-4xl font-bold text-white mb-1 tracking-tight">
-                            {stat.value}
+                          <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight mb-2">
+                            {item.title}
                           </h3>
-                          <p className="text-xs font-medium uppercase tracking-widest text-white/50 group-hover:text-white/80 transition-colors">
-                            {stat.label}
+                          <p className="text-white/60 text-sm md:text-base line-clamp-2 max-w-lg">
+                            {item.description}
                           </p>
                         </div>
-                      </motion.div>
-                    );
-                  })}
+
+                        {/* Views Stat - Featured */}
+                        {viewsStat && (
+                          <div className="flex items-baseline gap-2">
+                            <span className="text-4xl font-bold text-white tracking-tighter">
+                              {viewsStat.value}
+                            </span>
+                            <span className="text-sm font-medium text-white/40 tracking-widest uppercase">
+                              {viewsStat.label}
+                            </span>
+                          </div>
+                        )}
+
+                        {/* Secondary Stats (Small Grid) */}
+                        <div className="grid grid-cols-2 gap-x-8 gap-y-2 pt-4 border-t border-white/10 mt-2 opacity-60">
+                          {item.stats
+                            .slice(0, 4)
+                            .filter((s) => s !== viewsStat)
+                            .map((stat, i) => (
+                              <div key={i} className="flex flex-col">
+                                <span className="text-white font-bold text-sm">{stat.value}</span>
+                                <span className="text-[10px] uppercase text-white/60">{stat.label}</span>
+                              </div>
+                            ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Mobile: Progress Bar Under Each Card (Outside the box) */}
+              <div className="md:hidden px-1 pt-2">
+                <div className="h-1.5 rounded-full overflow-hidden bg-white/10">
+                  <motion.div
+                    className="h-full bg-zodiac"
+                    initial={{ width: 0 }}
+                    animate={{ width: activeIndex === index ? `${progress[index]}%` : "0%" }}
+                    transition={{ ease: "linear", duration: 0.3 }}
+                  />
                 </div>
               </div>
-            </div>
-          </div>
-        </motion.div>
-      </AnimatePresence>
+
+          </motion.div>
+          );
+        })}
       </div>
 
-      {/* Bottom Navigation Bars */}
-      <div className="w-full px-1">
-        <div className="grid grid-cols-4 gap-4">
-          {items.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveIndex(idx)}
-              className="group relative h-6 w-full bg-cream/10 rounded-lg overflow-hidden cursor-pointer"
+      {/* Progress Bars (Bottom) */}
+        <div className="hidden md:flex gap-2 w-full px-1">
+        {items.map((_, i) => (
+            <div 
+                key={i} 
+                className={cn(
+                    "h-2 rounded-full overflow-hidden bg-white/10 transition-all duration-500 ease-in-out mr-2",
+                    activeIndex === i ? "flex-[2]" : "flex-[1]"
+                )}
             >
-              {idx === activeIndex && (
-                <motion.div
-                  className="absolute inset-y-0 left-0 bg-zodiac"
-                  initial={{ width: "0%" }}
-                  animate={{ width: "100%" }}
-                  transition={{ duration: 5, ease: "linear" }}
-                />
-              )}
-              <div
-                className={`absolute inset-y-0 left-0 bg-zodiac/40 transition-all duration-300 ${
-                  idx !== activeIndex ? "w-0 group-hover:w-full" : "w-0"
-                }`}
-              />
-            </button>
-          ))}
-        </div>
+                 <motion.div 
+                    className="h-full bg-zodiac"
+                    initial={{ width: 0 }}
+                    animate={{ 
+                        width: activeIndex === i ? `${progress[i]}%` : "0%"
+                    }}
+                    transition={{ ease: "linear", duration: 0.3 }}
+                 />
+            </div>
+        ))}
       </div>
     </div>
   );

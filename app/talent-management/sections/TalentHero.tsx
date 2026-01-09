@@ -23,15 +23,16 @@ export default function HeroSection() {
             />
           </div>
         ))}
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-black/40 to-black pointer-events-none" />
       </div>
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/40" />
 
       {/* Hero Text */}
-      <div className="absolute inset-0 flex items-center justify-center z-10 text-center">
-        <h1 className="text-cream text-[8rem] md:text-[10rem] lg:text-[12rem] font-bold leading-none tracking-tight">
-          Talent
+      <div className="absolute inset-0 flex items-center justify-center z-10 text-center px-4">
+        <h1 className="text-cream text-5xl md:text-[8rem] lg:text-[10rem] font-bold leading-[0.9] tracking-tight">
+          360° Talent
           <br />
           Management
         </h1>

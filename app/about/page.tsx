@@ -1,7 +1,6 @@
 import AboutHero from "./sections/AboutHero";
 import OurPhilosophy from "./sections/OurPhilosophy";
 import Team from "./sections/Team";
-import Values from "./sections/Values";
 import CTA from "../influencer-marketing/sections/CTA";
 import DomeGallery from "@/components/ui/dome-gallery/DomeGallery";
 

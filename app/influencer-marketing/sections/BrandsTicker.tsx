@@ -9,6 +9,8 @@ export default function BrandsTicker() {
     "/images/brands/zodiac-brands-4.png",
     "/images/brands/zodiac-brands-5.png",
     "/images/brands/zodiac-brands-6.png",
+    "/images/brands/zodiac-brands-5.png",
+    "/images/brands/zodiac-brands-6.png",
   ];
 
   return (
@@ -17,7 +19,7 @@ export default function BrandsTicker() {
         {brands.map((brand, index) => (
           <div
             key={index}
-            className="relative w-48 h-24 flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300"
+            className="relative w-28 h-14 md:w-48 md:h-24 flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300"
           >
             <Image
               src={brand}

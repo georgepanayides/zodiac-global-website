@@ -15,11 +15,11 @@ export default function AboutHero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-6xl md:text-8xl lg:text-9xl font-bold text-white tracking-tighter leading-[0.9] mb-8"
+            className="text-5xl md:text-8xl lg:text-9xl font-bold text-white tracking-tighter leading-[0.9] mb-8"
           >
             WE ARE <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/40">
-              ZODIAC Gobal
+              ZODIAC GLOBAL
             </span>
           </motion.h1>
 
@@ -27,11 +27,9 @@ export default function AboutHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="text-lg md:text-2xl text-white/60 max-w-2xl mx-auto leading-relaxed font-light"
+            className="text-base md:text-2xl text-white/60 max-w-2xl mx-auto leading-relaxed font-light px-4"
           >
-            A new breed of influencer marketing agency. We bridge the gap between 
-            <span className="text-white font-medium"> raw creativity</span> and 
-            <span className="text-white font-medium"> commercial strategy</span>.
+            A next-generation Influencer Marketing and Talent Management agency connecting raw creativity with commercial outcomes.
           </motion.p>
         </div>
       </div>

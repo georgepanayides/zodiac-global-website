@@ -2,16 +2,21 @@
 
 import { useFormStatus } from "react-dom";
 
-export default function SubmitButton() {
+interface SubmitButtonProps {
+  isLoading?: boolean;
+}
+
+export default function SubmitButton({ isLoading }: SubmitButtonProps) {
   const { pending } = useFormStatus();
+  const isSubmitting = isLoading || pending;
 
   return (
     <button
       type="submit"
-      disabled={pending}
-      className="w-full md:w-auto px-8 py-3 bg-cream text-black font-semibold rounded-xl hover:bg-white/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+      disabled={isSubmitting}
+      className="w-full md:w-1/3 px-8 py-3 bg-cream text-zodiac font-semibold rounded-lg hover:bg-white/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
     >
-      {pending ? "SENDING..." : "SEND"}
+      {isSubmitting ? "SENDING..." : "SEND"}
     </button>
   );
 }

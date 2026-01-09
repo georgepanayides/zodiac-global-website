@@ -10,41 +10,38 @@ export default function WhatWeDo() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
-          <div className="relative z-10">
+          <div className="relative z-10 order-2 lg:order-1">
             <FadeIn>
-            <div className="absolute -top-40 -left-100 w-164 h-164 rounded-full border border-cream-900 bg-zodiac-900/50 -z-1" />
+            <div className="absolute -top-15 -left-50 md:-top-25 md:-left-100 w-90 h-90 md:w-164 md:h-164 rounded-full border border-cream-900 bg-zodiac-900/50 -z-1" />
             </FadeIn>
             <FadeIn>
-              <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-cream-100 mb-8 leading-tight">
-                Connecting Brands with <br />
-                <span className="text-white/40">Cultural Voices.</span>
+              <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-cream-100 mb-4 leading-tight">
+                Shaping influence <br />
+                <span className="text-white/40">across the GCC.</span>
               </h3>
+              <p className="text-xl text-cream-200 font-medium mb-8">
+                Built for influence in the modern Middle East
+              </p>
             </FadeIn>
 
             <FadeIn delay={0.2}>
               <div className="space-y-6 text-lg text-white/60 font-light leading-relaxed">
                 <p>
-                  At Zodiac Global, we don&apos;t just manage influencers; we architect movements. 
-                  We bridge the gap between premium brands and the digital voices that shape culture.
+                  Zodiac Global is a Dubai-born influencer and talent agency built for the modern Middle East. 
+                  We partner with ambitious brands across the GCC to create creator-led work that is 
+                  culturally relevant, commercially effective, and grounded in a deep understanding of the region.
                 </p>
                 <p>
-                  Our data-driven approach ensures that every partnership is authentic, 
-                  every campaign is measurable, and every piece of content resonates with 
-                  the audience that matters most to you.
+                  Working at the intersection of brand, culture, and performance, our approach combines 
+                  regional insight with world-class execution. We design and deliver creator partnerships 
+                  that move beyond visibility, focusing instead on relevance, quality, and long-term impact.
                 </p>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.4}>
-              <div className="mt-10 flex flex-wrap gap-4">
-                {["Strategy", "Casting", "Management", "Reporting"].map((item, i) => (
-                  <span 
-                    key={i}
-                    className="px-4 py-2 rounded-full bg-cream-900 border border-white/10 text-cream-100/80 text-sm hover:bg-cream-800/50 transition-colors cursor-default"
-                  >
-                    {item}
-                  </span>
-                ))}
+                <p>
+                  Our culturally led framework ensures that every collaboration is intentional, every 
+                  campaign is measurable, and every piece of content is crafted to resonate with audiences 
+                  who value authenticity, credibility, and purpose. The result is work that feels native 
+                  to the market, performs with clarity, and delivers meaningful impact.
+                </p>
               </div>
             </FadeIn>
           </div>

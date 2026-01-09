@@ -96,7 +96,7 @@ export default function RosterGrid() {
                 <button
                   key={region}
                   onClick={() => setActiveRegion(region)}
-                  className={`px-8 py-3 rounded-full text-sm font-medium tracking-wider uppercase transition-all duration-300 relative z-10 ${
+                  className={`px-8 py-3 rounded-full text-sm font-medium tracking-wider uppercase transition-all duration-300 relative z-10 cursor-pointer ${
                     activeRegion === region ? "text-white" : "text-white/60 hover:text-white"
                   }`}
                 >
@@ -111,22 +111,6 @@ export default function RosterGrid() {
                 </button>
               ))}
             </div>
-          </div>
-
-          {/* Category Filters */}
-          <div className="flex flex-wrap gap-4 mb-16 justify-center">
-            {["All", "Lifestyle", "Fashion", "Tech", "Beauty", "Travel", "Fitness"].map((filter, i) => (
-              <button 
-                key={filter}
-                className={`px-6 py-2 rounded-full border text-sm tracking-wider uppercase transition-all duration-300 ${
-                  i === 0 
-                    ? "bg-white text-black border-white" 
-                    : "bg-transparent text-white/60 border-white/10 hover:border-white/40 hover:text-white"
-                }`}
-              >
-                {filter}
-              </button>
-            ))}
           </div>
         </FadeIn>
 

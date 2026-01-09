@@ -23,18 +23,24 @@ export default function HeroSection() {
             />
           </div>
         ))}
+
+      {/* Bottom Fade */}
+      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-black/40 to-black pointer-events-none" />
       </div>
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/40" />
 
       {/* Hero Text */}
-      <div className="absolute inset-0 flex items-center justify-center z-10">
-        <h1 className="text-cream text-[8rem] md:text-[10rem] lg:text-[12rem] font-bold leading-none tracking-tight">
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-center px-4">
+        <h1 className="text-cream text-[4rem] md:text-[10rem] lg:text-[12rem] font-bold leading-none tracking-tight mb-6">
           Influencer
           <br />
           Marketing
         </h1>
+        <p className="text-xl md:text-3xl text-cream/80 font-light tracking-wide max-w-2xl">
+          Connecting Brands with cultural voices
+        </p>
       </div>
     </section>
   );

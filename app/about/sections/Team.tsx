@@ -58,7 +58,7 @@ const team = [
 
 export default function Team() {
   return (
-    <section className="py-32 bg-black relative">
+    <section className="md:py-32 py-12 bg-black relative">
       <div className="container mx-auto px-6">
         <FadeIn>
           <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter mb-16">
