@@ -241,7 +241,7 @@ export default function CaseStudyCarousel({ items }: CaseStudyCarouselProps) {
             <div 
                 key={i} 
                 className={cn(
-                    "h-2 rounded-full overflow-hidden bg-white/10 transition-all duration-500 ease-in-out mr-2",
+                    "h-2 rounded-full overflow-hidden bg-white/10 transition-all duration-500 ease-in-out mr-1",
                     activeIndex === i ? "flex-[2]" : "flex-[1]"
                 )}
             >

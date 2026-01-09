@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 
 export default function WhatWeDo() {
   return (
-    <section className="py-24 md:py-32 bg-black relative overflow-hidden">
+    <section className="py-12 md:py-32 bg-black relative overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
@@ -47,7 +47,7 @@ export default function WhatWeDo() {
           </div>
 
           {/* Image Content */}
-          <div className="relative">
+          <div className="relative order-1 lg:order-2">
             <FadeIn delay={0.3} direction="left">
               <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:ml-auto">
                 {/* Decorative Elements */}
