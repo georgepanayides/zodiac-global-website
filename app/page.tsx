@@ -61,6 +61,8 @@ export default function Home() {
                 fill
                 className="object-contain"
                 alt="Zodiac Global Logo"
+                priority
+                sizes="(min-width: 768px) 128px, 96px"
                 />
               </div>
               <h1 className="text-6xl md:text-[8rem] lg:text-[10rem] font-semibold text-cream leading-[0.8] text-center md:text-right tracking-tighter">
