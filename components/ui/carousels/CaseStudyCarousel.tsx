@@ -178,40 +178,24 @@ export default function CaseStudyCarousel({ items }: CaseStudyCarouselProps) {
                         </div>
                       </div>
 
-                      <div className="space-y-4">
+                      <div className="space-y-4 bg-cream/20 backdrop-blur-sm rounded-xl p-3">
                         <div>
-                          <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight mb-2">
+                          <h3 className="text-2xl md:text-3xl font-bold text-cream leading-tight mb-2">
                             {item.title}
                           </h3>
-                          <p className="text-white/60 text-sm md:text-base line-clamp-2 max-w-lg">
-                            {item.description}
-                          </p>
                         </div>
 
                         {/* Views Stat - Featured */}
                         {viewsStat && (
                           <div className="flex items-baseline gap-2">
-                            <span className="text-4xl font-bold text-white tracking-tighter">
+                            <span className="text-4xl font-bold text-cream tracking-tighter">
                               {viewsStat.value}
                             </span>
-                            <span className="text-sm font-medium text-white/40 tracking-widest uppercase">
+                            <span className="text-sm font-regular text-cream tracking-widest uppercase">
                               {viewsStat.label}
                             </span>
                           </div>
                         )}
-
-                        {/* Secondary Stats (Small Grid) */}
-                        <div className="grid grid-cols-2 gap-x-8 gap-y-2 pt-4 border-t border-white/10 mt-2 opacity-60">
-                          {item.stats
-                            .slice(0, 4)
-                            .filter((s) => s !== viewsStat)
-                            .map((stat, i) => (
-                              <div key={i} className="flex flex-col">
-                                <span className="text-white font-bold text-sm">{stat.value}</span>
-                                <span className="text-[10px] uppercase text-white/60">{stat.label}</span>
-                              </div>
-                            ))}
-                        </div>
                       </div>
                     </motion.div>
                   )}

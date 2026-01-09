@@ -3,9 +3,9 @@ import Image from "next/image";
 export default function HeroSection() {
   const gridImages = [
     "/images/HQB06728.jpg",
-    "/images/HQB06762.jpg",
-    "/images/HQB06855.jpg",
-    "/images/HQB06873.jpg",
+    "/images/museum-future.png",
+    "/images/dubai-skyline.png",
+    "/images/mike-zodiac-cover.png",
   ];
 
   return (
@@ -38,7 +38,7 @@ export default function HeroSection() {
           <br />
           Marketing
         </h1>
-        <p className="text-xl md:text-3xl text-cream/80 font-light tracking-wide max-w-2xl">
+        <p className="text-xl md:text-3xl text-cream/80 !font-bold tracking-wide max-w-2xl">
           Connecting Brands with cultural voices
         </p>
       </div>

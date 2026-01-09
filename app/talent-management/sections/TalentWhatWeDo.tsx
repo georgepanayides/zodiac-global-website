@@ -19,7 +19,7 @@ export default function TalentWhatWeDo() {
             </FadeIn>
 
             <FadeIn delay={0.2}>
-              <div className="space-y-6 text-lg text-white/60 font-light leading-relaxed">
+              <div className="space-y-6 text-xl text-cream !font-bold leading-relaxed">
                 <p>
                   Zodiac Global is a talent management agency operating across the UK and the Middle East, specialising in the representation and commercial growth of high-profile creators.
                 </p>

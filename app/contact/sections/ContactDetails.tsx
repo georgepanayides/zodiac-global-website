@@ -4,22 +4,22 @@ export default function ContactDetails() {
   const details = [
     {
       title: "General Enquiries",
-      email: "hello@zodiacglobal.com",
+      email: "info@zodiacglobal.com",
       desc: "For all general questions and information."
     },
     {
       title: "Talent Management",
-      email: "talent@zodiacglobal.com",
+      email: "danny@zodiacglobal.com",
       desc: "For representation and roster inquiries."
     },
     {
       title: "Brand Partnerships",
-      email: "partnerships@zodiacglobal.com",
+      email: "jonny@zodiacglobal.com",
       desc: "For brands looking to collaborate."
     },
     {
       title: "Press & Media",
-      email: "press@zodiacglobal.com",
+      email: "info@zodiacglobal.com",
       desc: "For media kits and interview requests."
     }
   ];

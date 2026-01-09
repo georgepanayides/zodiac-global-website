@@ -25,7 +25,7 @@ export default function WhatWeDo() {
             </FadeIn>
 
             <FadeIn delay={0.2}>
-              <div className="space-y-6 text-lg text-white/60 font-light leading-relaxed">
+              <div className="space-y-6 text-xl text-cream !font-semibold leading-relaxed">
                 <p>
                   Zodiac Global is a Dubai-born influencer and talent agency built for the modern Middle East. 
                   We partner with ambitious brands across the GCC to create creator-led work that is 
@@ -63,27 +63,6 @@ export default function WhatWeDo() {
                     fill
                     className="object-cover"
                   />
-                  
-                  {/* Floating Card */}
-                  <motion.div 
-                    initial={{ y: 20, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.6, duration: 0.5 }}
-                    className="absolute bottom-6 left-6 right-6 p-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl z-30"
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-cream-100 font-semibold text-sm">Engagement Rate</span>
-                      <span className="text-green-400 text-xs font-bold">▲ 12.5%</span>
-                    </div>
-                    <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        whileInView={{ width: "75%" }}
-                        transition={{ delay: 0.8, duration: 1 }}
-                        className="h-full bg-zodiac-900"
-                      />
-                    </div>
-                  </motion.div>
                 </div>
               </div>
             </FadeIn>

@@ -26,14 +26,14 @@ const locations = [
     name: "London",
     x: 478, // Approximate for 950 width
     y: 135, // Approximate for 620 height
-    address: ["123 Oxford Street", "London, W1D 1LP", "United Kingdom"],
+    address: ["c/o RPGCC, 40 Gracechurch Street, London, EC3V 0BT"],
     offsetClass: "translate-x-3 -translate-y-3",
   },
   {
     name: "Dubai",
     x: 625, // Approximate for 950 width
     y: 235, // Approximate for 620 height
-    address: ["Boulevard Plaza, Tower 1", "Downtown Dubai", "United Arab Emirates"],
+    address: ["1306 Concord Tower Media City, Dubai"],
     offsetClass: "translate-x-3 -translate-y-3",
   },
 ];

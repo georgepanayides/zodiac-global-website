@@ -11,7 +11,7 @@ import { IoTrendingUp, IoPeople, IoBriefcase, IoGlobeOutline, IoRocket } from "r
 
 export default function TalentStats() {
   return (
-    <section className="py-24 bg-black relative overflow-hidden">
+    <section className="py-12 bg-black relative overflow-hidden">
       <div className="container mx-auto px-6">
         <FadeIn>
           <h2 className="text-4xl md:text-5xl font-bold text-cream-100 mb-16 text-center">
@@ -70,7 +70,7 @@ export default function TalentStats() {
               </div>
               <div>
                 <div className="text-3xl font-bold text-white mb-1">
-                  <CountUp to={1} duration={2} />B
+                  <CountUp to={1} duration={2} />B+
                 </div>
                 <p className="text-white/60 text-sm">Global Audience Reach</p>
               </div>
@@ -101,7 +101,7 @@ export default function TalentStats() {
                 <IoRocket className="text-cream-100" size={20} />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white mb-1">10+ Creator Brand / IP Launched</h3>
+                <h3 className="text-lg font-bold text-white mb-1">10+ Creator Brands</h3>
                 <p className="text-white/60 text-xs text-pretty">
                   We help creators move beyond brand deals to build long-term businesses and ownable IP.
                 </p>

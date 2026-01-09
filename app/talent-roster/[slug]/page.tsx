@@ -1,6 +1,6 @@
 import ProfileHero from "./sections/ProfileHero";
 import ProfileStats from "./sections/ProfileStats";
-import RecentWork from "./sections/RecentWork";
+// import RecentWork from "./sections/RecentWork";
 import ProfileCTA from "./sections/ProfileCTA";
 
 // Mock Data Store (In a real app, this would be a database or CMS fetch)
@@ -100,7 +100,7 @@ export default async function TalentProfile({ params }: { params: Promise<{ slug
         image={talent.image}
       />
       <ProfileStats stats={talent.stats} />
-      <RecentWork work={talent.recentWork} />
+      {/* <RecentWork work={talent.recentWork} /> */}
       <ProfileCTA />
     </main>
   );

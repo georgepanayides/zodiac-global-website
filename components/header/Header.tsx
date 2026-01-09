@@ -27,7 +27,7 @@ const navigationConfig: Record<string, NavItem[]> = {
         { label: "Talent Management", href: "/talent-management" },
       ],
     },
-    { label: "ARTICLES", href: "/articles" },
+    // { label: "ARTICLES", href: "/articles" },
     { label: "CONTACT", href: "/contact" },
   ],
   talent: [
@@ -41,7 +41,7 @@ const navigationConfig: Record<string, NavItem[]> = {
       ],
     },
     { label: "OUR ROSTER", href: "/talent-roster" },
-    { label: "ARTICLES", href: "/articles" },
+    // { label: "ARTICLES", href: "/articles" },
     { label: "CONTACT", href: "/contact" },
   ],
   influencer: [
@@ -54,7 +54,7 @@ const navigationConfig: Record<string, NavItem[]> = {
         { label: "Talent Management", href: "/talent-management" },
       ],
     },
-    { label: "ARTICLES", href: "/articles" },
+    // { label: "ARTICLES", href: "/articles" },
     { label: "CONTACT", href: "/contact" },
   ],
 };

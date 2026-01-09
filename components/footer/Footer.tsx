@@ -60,7 +60,8 @@ export default function Footer() {
                  <div className="flex flex-col gap-4">
                     {[
                       { name: "INSTAGRAM", href: "https://www.instagram.com/zodiacglobalgroup/" },
-                      { name: "TIKTOK", href: "https://www.tiktok.com/@_zodiacglobal?_r=1&_t=ZS-91sdhROEFnA" }
+                      { name: "TIKTOK", href: "https://www.tiktok.com/@_zodiacglobal?_r=1&_t=ZS-91sdhROEFnA" },
+                      { name: "LINKEDIN", href: "https://www.linkedin.com/company/zodiac-global/"}
                     ].map((social) => (
                       <a
                         key={social.name}
